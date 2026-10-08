@@ -1,0 +1,58 @@
+@use '@angular/material' as mat;
+
+html {
+  color-scheme: light;
+  @include mat.theme((
+    color: mat.$azure-palette,
+    typography: Roboto,
+    density: 0,
+  ));
+  --pf-background: #f7f9fc;
+  --pf-sidebar: #ffffff;
+  --pf-topbar: #ffffff;
+  --pf-workspace: #fcfdff;
+  --pf-note: #f7faff;
+  --pf-border: #e9edf4;
+  --pf-heading: #26344d;
+  --pf-text: #39475d;
+  --pf-muted: #8994a6;
+  --pf-nav: #66758c;
+  --pf-active: #edf3fc;
+  --pf-hover: #f6f8fc;
+  --pf-accent: #315f9f;
+  --pf-surface: #ffffff;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --pf-background: #111824;
+  --pf-sidebar: #192232;
+  --pf-topbar: #192232;
+  --pf-workspace: #202d40;
+  --pf-note: #202c3f;
+  --pf-border: #2a394e;
+  --pf-heading: #edf2fc;
+  --pf-text: #c7d4e8;
+  --pf-muted: #a0aec5;
+  --pf-nav: #b3c0d3;
+  --pf-active: #263d5e;
+  --pf-hover: #243348;
+  --pf-accent: #97beff;
+  --pf-surface: #1b2638;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body { font-family: Tahoma, 'Segoe UI', sans-serif; color: var(--pf-text); background: var(--pf-background); }
+button, input, textarea { font: inherit; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; }
+::selection { background: #b2d2ff9c; color: #152540; }
+.mat-drawer-content { overflow-x: hidden !important; }
+.pf-card { background: var(--pf-surface); border: 1px solid var(--pf-border); border-radius: 18px; box-shadow: 0 8px 26px #1a294006; }
+.pf-muted { color: var(--pf-muted); }
+.pf-section-title { font-size: 17px; font-weight: 800; color: var(--pf-heading); margin: 0; }
+.pf-eyebrow { font-size: 11px; letter-spacing: .06em; color: var(--pf-accent); font-weight: 800; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
