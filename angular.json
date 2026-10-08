@@ -69,7 +69,7 @@
           "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "testRunner": "vitest"
+            "runner": "vitest"
           }
         }
       }
