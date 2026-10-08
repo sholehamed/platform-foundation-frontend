@@ -14,6 +14,6 @@ export const AUTH_SESSION = new InjectionToken<AuthSession>('AUTH_SESSION');
 export class AnonymousAuthSession implements AuthSession {
   readonly authenticated = signal(false).asReadonly();
 
-  hasPermission(_permission: string): boolean { return false; }
+  hasPermission(permission: string): boolean { void permission; return false; }
   accessToken(): string | null { return null; }
 }
