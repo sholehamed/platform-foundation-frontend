@@ -23,14 +23,14 @@ describe('route guards', () => {
 
   it('redirects anonymous callers to sign-in', () => {
     const result = TestBed.runInInjectionContext(() =>
-      authGuard({} as never, []));
+      authGuard({} as never, [], {} as never));
     expect(result).toEqual(TestBed.inject(Router).createUrlTree(['/auth/sign-in']));
   });
 
   it('forbids an authenticated user without permission', () => {
     authenticated.set(true);
     const result = TestBed.runInInjectionContext(() =>
-      permissionGuard('platform.observability.read')({} as never, []));
+      permissionGuard('platform.observability.read')({} as never, [], {} as never));
     expect(result).toEqual(TestBed.inject(Router).createUrlTree(['/forbidden']));
   });
 
@@ -38,7 +38,7 @@ describe('route guards', () => {
     authenticated.set(true);
     allowPermission = true;
     const result = TestBed.runInInjectionContext(() =>
-      permissionGuard('platform.observability.read')({} as never, []));
+      permissionGuard('platform.observability.read')({} as never, [], {} as never));
     expect(result).toBe(true);
   });
 });
