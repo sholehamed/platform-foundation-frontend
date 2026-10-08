@@ -1,0 +1,83 @@
+<mat-sidenav-container class="shell">
+  <mat-sidenav #drawer class="sidebar" [mode]="compact() ? 'over' : 'side'"
+    [opened]="!compact()" [fixedInViewport]="compact()">
+    <div class="sidebar-inner">
+      <a routerLink="/overview" class="brand" (click)="closeMobile(drawer)" aria-label="Platform Foundation">
+        <span class="brand-mark" aria-hidden="true">PF<span class="brand-dot">.</span></span>
+        <span class="brand-copy">
+          <strong>Platform Foundation</strong>
+          <small>{{ isFa() ? 'پنل مدیریت و توسعه' : 'Developer workspace' }}</small>
+        </span>
+      </a>
+
+      <div class="workspace">
+        <span class="workspace-avatar">P</span>
+        <div class="workspace-label">
+          <strong>{{ isFa() ? 'فضای کاری اصلی' : 'Main workspace' }}</strong>
+          <small>Foundation / Workspace</small>
+        </div>
+        <span class="workspace-chevron" aria-hidden="true">⌄</span>
+      </div>
+
+      <div class="nav-heading">{{ isFa() ? 'منوی اصلی' : 'MAIN MENU' }}</div>
+      <nav class="navigation" [attr.aria-label]="isFa() ? 'ناوبری اصلی' : 'Main navigation'">
+        @for (item of menu; track item.path) {
+          <a [routerLink]="item.path" routerLinkActive="nav-active"
+            [routerLinkActiveOptions]="{ exact: item.path === '/overview' }"
+            (click)="closeMobile(drawer)" class="nav-item">
+            <span class="nav-icon" aria-hidden="true">{{ item.icon }}</span>
+            <span>{{ isFa() ? item.labelFa : item.labelEn }}</span>
+            @if (item.path === '/monitoring') {
+              <span class="nav-lock" [attr.aria-label]="isFa() ? 'نیازمند ورود' : 'Sign-in required'">↗</span>
+            }
+          </a>
+        }
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-note">
+        <span class="note-emoji" aria-hidden="true">✦</span>
+        <strong>{{ isFa() ? 'آماده برای توسعه' : 'Ready to build' }}</strong>
+        <p>{{ isFa() ? 'ماژول‌ها مرحله‌به‌مرحله به این فضای کاری اضافه می‌شوند.' : 'Features will arrive in small, tested increments.' }}</p>
+        <span class="foundation-version">FOUNDATION / v0.1.0</span>
+      </div>
+      <div class="sidebar-footer"><span class="status-indicator"></span> {{ isFa() ? 'پایه رابط کاربری فعال' : 'UI foundation ready' }}</div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-pane">
+    <mat-toolbar class="topbar">
+      <div class="topbar-start">
+        @if (compact()) {
+          <button mat-icon-button (click)="drawer.toggle()" [attr.aria-label]="isFa() ? 'باز کردن منو' : 'Toggle navigation'">
+            <span class="hamburger" aria-hidden="true">☰</span>
+          </button>
+        }
+        <span class="crumb-root">Platform</span>
+        <span class="crumb-divider">/</span>
+        <span class="crumb-current">{{ isFa() ? 'محیط مدیریت' : 'Workspace' }}</span>
+      </div>
+
+      <div class="topbar-actions">
+        <span class="environment-chip"><span class="status-indicator"></span> {{ isFa() ? 'محیط توسعه' : 'Development' }}</span>
+        <button mat-button class="topbar-action" (click)="preferences.toggleLanguage()"
+          [attr.aria-label]="isFa() ? 'تغییر زبان به انگلیسی' : 'Switch to Persian'">
+          {{ isFa() ? 'EN' : 'فا' }}
+        </button>
+        <button mat-icon-button class="topbar-action" (click)="preferences.toggleTheme()"
+          [attr.aria-label]="isFa() ? 'تغییر پوسته' : 'Toggle theme'">
+          <span aria-hidden="true">{{ preferences.theme() === 'dark' ? '☀' : '☾' }}</span>
+        </button>
+        <a mat-stroked-button routerLink="/auth/sign-in" class="login-button">
+          {{ isFa() ? 'ورود به حساب' : 'Sign in' }}
+        </a>
+      </div>
+    </mat-toolbar>
+    <main class="page-content" id="main-content">
+      <router-outlet />
+    </main>
+    <footer class="page-footer">
+      <span>© Platform Foundation · 2026</span>
+      <span>{{ isFa() ? 'ساخته‌شده برای توسعه پایدار' : 'Engineered for sustainable growth' }}</span>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
