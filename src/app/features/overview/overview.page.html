@@ -1,0 +1,65 @@
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-label"><span class="hero-label-dot"></span> PLATFORM FOUNDATION · WORKSPACE</div>
+    <h1>{{ fa() ? 'یک پایه محکم برای' : 'A stronger foundation for' }}<br><span>{{ fa() ? 'ساختن نرم‌افزارهای بهتر.' : 'better software.' }}</span></h1>
+    <p>{{ fa() ? 'زیرساخت فرانت با معماری مدرن، اجزای قابل استفاده مجدد و قراردادهای استاندارد آماده شده تا توسعه قابلیت‌های اصلی رو با اطمینان شروع کنیم.' : 'A modern, reusable frontend foundation — with a clean architecture designed to grow alongside your backend.' }}</p>
+    <div class="hero-actions">
+      <a mat-flat-button routerLink="/settings">{{ fa() ? 'شخصی‌سازی محیط' : 'Customize workspace' }} <span aria-hidden="true">←</span></a>
+      <a mat-stroked-button routerLink="/monitoring">{{ fa() ? 'مشاهده مانیتورینگ' : 'Open monitoring' }}</a>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="orb orb-back"></div>
+    <div class="orb orb-front"></div>
+    <div class="interface-card">
+      <div class="interface-heading"><span class="dots"><i></i><i></i><i></i></span> SYSTEM / FOUNDATION <span class="live-dot"></span></div>
+      <div class="interface-row"><span class="interface-circle"></span><span class="interface-lines"><b></b><b></b></span><span class="tiny-check">✓</span></div>
+      <div class="interface-row"><span class="interface-circle blue"></span><span class="interface-lines"><b></b><b></b></span><span class="tiny-check">✓</span></div>
+      <div class="interface-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="floating-ship">◈ <span>ANGULAR 22</span></div>
+  </div>
+</section>
+
+<section class="intro-row">
+  <div>
+    <span class="pf-eyebrow">BUILDING BLOCKS / 01</span>
+    <h2 class="pf-section-title">{{ fa() ? 'همه‌چیز از یک معماری درست شروع می‌شه' : 'It starts with a strong architecture' }}</h2>
+  </div>
+  <span class="intro-caption">{{ fa() ? 'قابلیت‌های پایه آماده توسعه' : 'Core building blocks' }}</span>
+</section>
+<section class="features">
+  @for (card of cards; track card.categoryEn) {
+    <article class="feature-card pf-card">
+      <span class="feature-icon">{{ card.icon }}</span>
+      <div class="feature-category">{{ fa() ? card.categoryFa : card.categoryEn }}</div>
+      <h3>{{ fa() ? card.titleFa : card.titleEn }}</h3>
+      <p>{{ fa() ? card.descriptionFa : card.descriptionEn }}</p>
+      <span class="feature-footer">FOUNDATION <span>↗</span></span>
+    </article>
+  }
+</section>
+
+<section class="bottom-grid">
+  <div class="pf-card tech-card">
+    <div class="card-heading">
+      <div><span class="pf-eyebrow">TECH STACK</span><h2 class="pf-section-title">{{ fa() ? 'وضعیت زیرساخت' : 'Foundation readiness' }}</h2></div>
+      <span class="tech-label">F01</span>
+    </div>
+    <div class="tech-rows">
+      @for (layer of layers; track layer.label) {
+        <div class="tech-row">
+          <span class="tech-icon">{{ layer.label.charAt(0) }}</span>
+          <div><strong>{{ layer.label }}</strong><small>{{ layer.description }}</small></div>
+          <span class="layer-badge" [class.pending]="layer.badge !== 'READY'">{{ layer.badge }}</span>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="pf-card next-card">
+    <div class="card-heading"><div><span class="pf-eyebrow">COMING NEXT</span><h2 class="pf-section-title">{{ fa() ? 'مسیر پیش رو' : 'What comes next' }}</h2></div></div>
+    <div class="milestone"><span>01</span><div><strong>{{ fa() ? 'اتصال احراز هویت' : 'Connect identity' }}</strong><p>{{ fa() ? 'یکپارچگی واقعی با OIDC و سطح دسترسی Backend' : 'Real OIDC session and server permissions' }}</p></div></div>
+    <div class="milestone"><span>02</span><div><strong>{{ fa() ? 'کلاینت Monitoring' : 'Monitoring client' }}</strong><p>{{ fa() ? 'تاریخچه درخواست‌ها، خطاها و Traceها' : 'Operations, errors and trace history' }}</p></div></div>
+    <div class="milestone"><span>03</span><div><strong>{{ fa() ? 'توسعه ماژول‌ها' : 'Build feature modules' }}</strong><p>{{ fa() ? 'اجزای UI و جریان‌های کاری واقعی' : 'Real workflows and reusable UI' }}</p></div></div>
+  </div>
+</section>
