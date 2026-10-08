@@ -41,7 +41,7 @@ export class ObservabilityApi {
     });
   }
 
-  private parameters(values: Record<string, string | number | boolean | undefined>): HttpParams {
+  private parameters(values: object): HttpParams {
     let params = new HttpParams();
     for (const [key, value] of Object.entries(values)) {
       if (value !== undefined && value !== '') params = params.set(key, String(value));

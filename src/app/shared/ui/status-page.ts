@@ -2,6 +2,14 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 
+const statusStyles = `
+  .status-page { min-height: 100dvh; padding: 25px; display: flex; flex-direction: column; gap: 15px; justify-content: center; align-items: center; text-align: center; }
+  .code { font: 900 100px 'Segoe UI', sans-serif; letter-spacing: -.1em; color: var(--pf-accent); }
+  h1 { margin: 0; font-size: 25px; color: var(--pf-heading); }
+  p { margin: 0 0 10px; color: var(--pf-muted); font-size: 13px; }
+`;
+
+
 @Component({
   selector: 'app-forbidden',
   standalone: true,
@@ -20,9 +28,3 @@ export class ForbiddenPage {}
 })
 export class NotFoundPage {}
 
-const statusStyles = `
-  .status-page { min-height: 100dvh; padding: 25px; display: flex; flex-direction: column; gap: 15px; justify-content: center; align-items: center; text-align: center; }
-  .code { font: 900 100px 'Segoe UI', sans-serif; letter-spacing: -.1em; color: var(--pf-accent); }
-  h1 { margin: 0; font-size: 25px; color: var(--pf-heading); }
-  p { margin: 0 0 10px; color: var(--pf-muted); font-size: 13px; }
-`;
